@@ -20,6 +20,9 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          # Ajout de l'hôte à la liste known_hosts
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          cat ~/.ssh/known_hosts
 
       # Étape 3 : Déployer le code
       - name: Deploy to EC2
@@ -30,5 +33,3 @@ jobs:
       - name: Clean up
         run: |
           rm -rf ~/.ssh
-
-# ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
