@@ -27,7 +27,7 @@ jobs:
       # Étape 3 : Déployer le code
       - name: Deploy to EC2
         run: |
-          ssh -vvv -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+          ssh serverweb@$35.180.225.154 "cd /home/serverweb/site/react-github-aws && git checkout main && git pull"
 
       # Étape 4 : Nettoyer les clés SSH
       - name: Clean up
