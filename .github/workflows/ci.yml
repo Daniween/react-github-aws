@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Étape 2 : Configurer SSH
+      # Étape 2 : Configurer la connexion SSH
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
