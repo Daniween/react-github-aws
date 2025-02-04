@@ -1,5 +1,5 @@
 # Étape de build
-FROM node:16 as build
+FROM node:18 as build
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY . .
 RUN yarn build
 
 # Étape de production
-FROM node:16-alpine
+FROM node:18-alpine
 
 RUN yarn global add serve
 
